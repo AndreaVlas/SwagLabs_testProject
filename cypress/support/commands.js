@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("sortProductsBy", (option) => {
+  cy.get('[data-test="product_sort_container"]').select(option);
+  let optionsArray = [];
+  cy.get(".inventory_list")
+    .each(($el, index) => {
+      optionsArray[index] = $el.text();
+      cy.log($el);
+    })
+    .then(() => {
+      expect(optionsArray).to.deep.equal(optionsArray.sort());
+    });
+});

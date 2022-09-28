@@ -1,4 +1,6 @@
-describe("Login to website", () => {
+import Login from "../../selectors/LoginPage.sel";
+
+describe("Get error while trying to log", () => {
   before(function () {
     cy.visit("https://www.saucedemo.com/");
     cy.fixture("testData").then(function (testData) {
@@ -6,10 +8,10 @@ describe("Login to website", () => {
     });
   });
   it("Get eroor for an unsuccessful Login", function () {
-    cy.get('[data-test="username"]').type(this.testData.lockedOutUser);
-    cy.get('[data-test="password"]').type(this.testData.password);
-    cy.get('[data-test="login-button"]').click();
-    cy.get('[data-test="error"]').should(
+    cy.get(Login.loginInput).type(this.testData.lockedOutUser);
+    cy.get(Login.passwordInput).type(this.testData.password);
+    cy.get(Login.loginButton).click();
+    cy.get(Login.errorMessage).should(
       "have.text",
       "Epic sadface: Sorry, this user has been locked out."
     );
