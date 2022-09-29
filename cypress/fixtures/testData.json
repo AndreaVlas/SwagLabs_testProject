@@ -1,6 +1,6 @@
 {
     "standardUser" : "standard_user",
-    "lockedOutUser" : "locked_out_user", 
-    "password": "secret_sauce",
-    "order": ["Sauce Labs Backpack", "Sauce Labs Bike Light", "Sauce Labs Bolt T-Shirt", "Sauce Labs Fleece Jacket","Sauce Labs Onesie","Test.allTheThings() T-Shirt (Red)"]
+    "lockedOutUser" : "locked_out_user",
+    "performanceUser" : "performance_glitch_user", 
+    "password": "secret_sauce"
 }

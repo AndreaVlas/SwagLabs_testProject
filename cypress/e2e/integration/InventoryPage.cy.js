@@ -30,4 +30,16 @@ describe("Test Inventory Page", () => {
         expect(optionsArray).to.deep.equal(optionsArray.sort());
       });
   });
+  it("will check the product", function () {
+    cy.get(".inventory_list")
+      .find(".inventory_item")
+      .each(($el) => {
+        const productName = $el.find(".inventory_item_name").text();
+        if (productName.includes("Sauce Labs Onesie")) {
+          $el
+            .find('button[class="btn btn_primary btn_small btn_inventory"]')
+            .click();
+        }
+      });
+  });
 });
