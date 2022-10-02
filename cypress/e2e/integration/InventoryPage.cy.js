@@ -30,7 +30,7 @@ describe("Test Inventory Page", () => {
         expect(optionsArray).to.deep.equal(optionsArray.sort());
       });
   });
-  it("will check the product", function () {
+  it("will check the product and add it to the cart", function () {
     cy.get(".inventory_list")
       .find(".inventory_item")
       .each(($el) => {
@@ -42,4 +42,19 @@ describe("Test Inventory Page", () => {
         }
       });
   });
+  it("will check if to a product correspond it's price", function () {
+    cy.get(".inventory_item").each(($e1, index) => {
+      const text = $e1.text();
+      if (text.includes("Onesie")) {
+        cy.get(".inventory_item_price")
+          .eq(index)
+          .then(function (price) {
+            const priceText = price.text();
+            expect(priceText).to.equal("$7.99");
+          });
+      }
+    });
+  });
 });
+//when the add button is clicked, cart is incremented by 1,
+//and where is clicked again(same button) is decremented by 1.
