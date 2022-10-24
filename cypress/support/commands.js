@@ -10,8 +10,25 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
+const password = "secret_sauce";
+Cypress.Commands.add("login", (role) => {
+  cy.get('[data-test="username"]').type(role);
+  cy.get('[data-test="password"]').type(password);
+  cy.get('[data-test="login-button"]').click();
+});
+
+let targetedAddItemIndex = 0;
+Cypress.Commands.add("addItemCart", () => {
+  cy.get('button[class = "btn btn_primary btn_small btn_inventory"]')
+    .eq(targetedAddItemIndex)
+    .click();
+});
+let targetedRemoveItemIndex = 0;
+Cypress.Commands.add("removeItemCart", () => {
+  const removeButton = cy.get('[data-test="remove-sauce-labs-backpack"]');
+  removeButton.should("have.text", "Remove").eq(targetedAddItemIndex).click();
+});
+
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

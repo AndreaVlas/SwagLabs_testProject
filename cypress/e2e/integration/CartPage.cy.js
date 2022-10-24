@@ -7,9 +7,10 @@ describe("Test Inventory Page", () => {
     cy.login("standard_user");
     cy.url().should("include", "/inventory.html");
   });
-  it("Select options from dropdown", function () {
-    cy.sortProductsBy("Name (Z to A)");
-    cy.sortProductsBy("Price (low to high)");
-    cy.sortProductsBy("Price (high to low)");
+  it("Open the cart", function () {
+    cy.get(".shopping_cart_link").click();
+    cy.login("standard_user");
+    cy.get(".shopping_cart_link").click();
+    cy.url().should("include", "cart.html");
   });
 });

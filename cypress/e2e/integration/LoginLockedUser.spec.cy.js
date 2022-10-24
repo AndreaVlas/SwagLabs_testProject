@@ -8,9 +8,7 @@ describe("Get error while trying to log", () => {
     });
   });
   it("Get eroor for an unsuccessful Login", function () {
-    cy.get(Login.loginInput).type(this.testData.lockedOutUser);
-    cy.get(Login.passwordInput).type(this.testData.password);
-    cy.get(Login.loginButton).click();
+    cy.login("locked_out_user");
     cy.get(Login.errorMessage).should(
       "have.text",
       "Epic sadface: Sorry, this user has been locked out."

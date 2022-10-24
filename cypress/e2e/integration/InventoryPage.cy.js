@@ -39,6 +39,7 @@ describe("Test Inventory Page", () => {
           $el
             .find('button[class="btn btn_primary btn_small btn_inventory"]')
             .click();
+          cy.get(".shopping_cart_badge").should("be.visible");
         }
       });
   });
